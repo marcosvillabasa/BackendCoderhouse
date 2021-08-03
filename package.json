@@ -1,0 +1,14 @@
+{
+	"name": "clase-8",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon index"
+	},
+	"author": "Marcos",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.17.1"
+	}
+}
