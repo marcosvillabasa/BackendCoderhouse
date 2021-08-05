@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Product } = require('../Product');
+const { Product } = require('../../Product');
 
 const products = new Product();
 
@@ -53,6 +53,37 @@ router.post('/save', (req, res) => {
 		data: {
 			title,
 		},
+	});
+});
+
+router.put('/update/:id', (req, res) => {
+	const { title, price, thumbnail } = req.body;
+	const { id } = req.params
+	if (!id) {
+		res.status(400).json({
+			ok: false,
+			msg: 'Id invalid',
+		});
+	}
+	products.updateProduct(parseInt(req.params.id), title, price, thumbnail);
+	res.status(201).json({
+		ok: true,
+		data: products,
+	});
+});
+
+router.delete('/delete/:id', (req, res) => {
+	const { id } = req.params;
+	if (!id) {
+		res.status(400).json({
+			ok: false,
+			msg: 'Id invalid',
+		});
+	}
+	products.deleteProduct(parseInt(id));
+	res.status(201).json({
+		ok: true,
+		data: products,
 	});
 });
 
