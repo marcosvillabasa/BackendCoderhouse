@@ -4,17 +4,20 @@ const { Product } = require('../../Product');
 
 const products = new Product();
 
+
 router.get('/', (req, res) => {
-	if (products.getAllProducts().length === 0) {
-		res.status(400).json({
-			ok: false,
-			msg: 'There are no products',
-		});
-	}
-	res.json({
-		msg: 'Products',
-		data: products.getAllProducts(),
-	});
+	// if (products.getAllProducts().length === 0) {
+	// 	// res.status(400).json({
+	// 	// 	ok: false,
+	// 	// 	msg: 'There are no products',
+	// 	// });
+	// 	res.render('main')
+	// }
+	// res.json({
+	// 	msg: 'Products',
+	// 	data: products.getAllProducts(),
+	// });
+	res.render('main', { listProducts: products.getAllProducts(),ok: products.getAllProducts().length > 0})
 });
 
 router.get('/:id', (req, res) => {

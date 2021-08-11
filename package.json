@@ -4,11 +4,12 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon index"
+		"dev": "nodemon src/index"
 	},
 	"author": "Marcos",
 	"license": "ISC",
 	"dependencies": {
-		"express": "^4.17.1"
+		"express": "^4.17.1",
+		"express-handlebars": "^5.3.3"
 	}
 }
