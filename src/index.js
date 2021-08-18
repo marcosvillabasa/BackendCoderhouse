@@ -16,21 +16,12 @@ app.use(express.static(publicPath));
 const layoutDirPath = path.resolve(__dirname, '../views/layouts');
 const defaultLayerPth = path.resolve(__dirname, '../views/layouts/index.hbs');
 
-const partialDirPath = path.resolve(__dirname, '../views/partials');
-app.set('view engine', 'hbs');
-app.engine(
-    'hbs',
-    handlebars({
-      layoutsDir: layoutDirPath,
-      extname: 'hbs',
-      defaultLayout: defaultLayerPth,
-      partialsDir: partialDirPath,
-    })
-  );
+app.set('view engine', 'pug');
+const viewsPath = path.resolve(__dirname, '../views');
+app.set('views', viewsPath);
 
 //routes
 app.use('/api/products', routesProducts);
-  
 
 const server = app.listen(8080, () => {
 	console.log(`Server on: ${PORT}`);

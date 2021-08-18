@@ -6,19 +6,8 @@ const products = new Product();
 
 
 router.get('/', (req, res) => {
-	// if (products.getAllProducts().length === 0) {
-	// 	// res.status(400).json({
-	// 	// 	ok: false,
-	// 	// 	msg: 'There are no products',
-	// 	// });
-	// 	res.render('main')
-	// }
-	// res.json({
-	// 	msg: 'Products',
-	// 	data: products.getAllProducts(),
-	// });
-	res.render('main', { listProducts: products.getAllProducts(),ok: products.getAllProducts().length > 0})
-});
+	res.render('main.pug', { products: products.getAllProducts() }); // Se muestra la plantilla hello.pug
+  });
 
 router.get('/:id', (req, res) => {
 	const { id } = req.params;
@@ -50,13 +39,7 @@ router.post('/save', (req, res) => {
 		});
 	}
 	products.save({ title, price, thumbnail });
-	res.status(201).json({
-		ok: true,
-		msg: 'Product was created',
-		data: {
-			title,
-		},
-	});
+	res.redirect('/api/products')
 });
 
 router.put('/update/:id', (req, res) => {

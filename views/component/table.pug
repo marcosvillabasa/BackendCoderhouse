@@ -1,0 +1,12 @@
+table(class="table")
+    thead
+        tr 
+            th Title
+            th Price
+            th Image
+    tbody 
+        each val in products
+            tr 
+                td= val.title
+                td= val.price
+                td= val.thumbnail
