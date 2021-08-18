@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Thumbnail</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% products.forEach(item=> { %>
+            <tr>
+                <td><%= item.title %></td>
+                <td><%= item.price %></td>
+                <td><%= item.thumbnail %></td>
+            </tr>
+            <% }) %>
+    </tbody>
+  </table>

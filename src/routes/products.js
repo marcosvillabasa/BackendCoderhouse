@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 	// 	msg: 'Products',
 	// 	data: products.getAllProducts(),
 	// });
-	res.render('main', { listProducts: products.getAllProducts(),ok: products.getAllProducts().length > 0})
+	res.render('main', {products: products.getAllProducts()})
 });
 
 router.get('/:id', (req, res) => {
@@ -50,13 +50,7 @@ router.post('/save', (req, res) => {
 		});
 	}
 	products.save({ title, price, thumbnail });
-	res.status(201).json({
-		ok: true,
-		msg: 'Product was created',
-		data: {
-			title,
-		},
-	});
+	res.redirect('/api/products')
 });
 
 router.put('/update/:id', (req, res) => {
