@@ -42,6 +42,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/save', (req, res) => {
+	console.log(req.body)
 	const { title, price, thumbnail } = req.body;
 	if (!title || !price || !thumbnail) {
 		res.status(400).json({
